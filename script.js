@@ -25,3 +25,9 @@ function addBookToLibrary(){
     const confirmationMsg = createBook.returnBookInfo(); 
     return myLibrary; 
 };
+
+function displayBooks(){
+    myLibrary.forEach(book => {
+        console.log(book);
+    });
+}
