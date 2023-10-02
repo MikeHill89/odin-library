@@ -1,3 +1,5 @@
+const addBookButton = document.querySelector(".addbook");
+const bookContainer = document.querySelector(".book-container");
 const myLibrary = [];
 
 //constructor of book objects, creates instances of Book
@@ -23,11 +25,45 @@ function addBookToLibrary(){
     myLibrary.push(createBook);
     console.log("This book has now been added in the library: " +createBook.returnBookInfo());
     const confirmationMsg = createBook.returnBookInfo(); 
+    displayBooks();
     return myLibrary; 
 };
 
 function displayBooks(){
+    // Clear the existing content of the bookContainer element
+    bookContainer.innerHTML = "";
+
     myLibrary.forEach(book => {
-        console.log(book);
+        // Create a card element
+        const card = document.createElement("div");
+        card.classList.add("book-card");
+
+        // Create a heading element for the book title
+        const title = document.createElement("h3");
+        title.textContent = book.title;
+
+        // Create a paragraph element for the book author
+        const author = document.createElement("p");
+        author.textContent = `Author: ${book.author}`;
+
+        // Create a paragraph element for the book pages
+        const pages = document.createElement("p");
+        pages.textContent = `Pages: ${book.pages}`;
+
+        // Create a paragraph element for the book status
+        const status = document.createElement("p");
+        status.textContent = `Read: ${book.status}`;
+
+        // Append the title, author, pages, and status elements to the card element
+        card.appendChild(title);
+        card.appendChild(author);
+        card.appendChild(pages);
+        card.appendChild(status);
+
+        // Append the card element to the bookContainer element
+        bookContainer.appendChild(card);
     });
 }
+
+addBookButton.addEventListener("click", addBookToLibrary);
+
