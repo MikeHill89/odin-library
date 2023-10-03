@@ -33,11 +33,11 @@ function displayBooks(){
     // Clear the existing content of the bookContainer element
     bookContainer.innerHTML = "";
 
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         // Create a card element
         const card = document.createElement("div");
         card.classList.add("book-card");
-
+        card.setAttribute("data-position", index)
         // Create a heading element for the book title
         const title = document.createElement("h3");
         title.textContent = book.title;
@@ -53,12 +53,27 @@ function displayBooks(){
         // Create a paragraph element for the book status
         const status = document.createElement("p");
         status.textContent = `Read: ${book.status}`;
+        // Create a button element to remove the card
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.addEventListener("click", () => {
+            // Remove the card from the UI
+            card.remove();
+
+            // Remove the corresponding book from the myLibrary array
+            myLibrary.splice(index, 1);
+            // Update the data-position attribute of the remaining cards
+            bookContainer.querySelectorAll(".book-card").forEach((card, updatedPosition) => {
+                card.setAttribute("data-position", updatedPosition);
+            });
+        });
 
         // Append the title, author, pages, and status elements to the card element
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(pages);
         card.appendChild(status);
+        card.appendChild(removeButton);
 
         // Append the card element to the bookContainer element
         bookContainer.appendChild(card);
