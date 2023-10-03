@@ -11,6 +11,37 @@
     <div class="wrapper">
         <h1>Library Project</h1>  
         <button class="addbook">Add a Book</button> 
+        <dialog id="bookDialog">
+            <form action="none">
+                <h2>Add a Book</h2>
+                <p>
+                    <p>
+                        <label for="booktitle">Book title</label>
+                        <input type="text" name="booktitle" id="booktitle">
+                    </p>
+                    <p>
+                        <label for="bookauthor">Book Author</label>
+                        <input type="text" name="bookauthor" id="bookauthor">
+                    </p>
+                    <p>
+                        <label for="bookpages">Amount of pages</label>
+                        <input type="number" name="bookpages" id="bookpages">
+                    </p>
+                    <p>
+                        <label for="bookstatus">Book finished?:
+                            <select>
+                                <option value="yes">yes</option>
+                                <option value="no">no</option>
+                            </select>
+                        </label>
+                    </p>
+                </p>
+                <div>
+                    <button value="cancel" formmethod="dialog">Cancel</button>
+                    <button id="confirmBookBtn" value="submit">Add Book</button>
+                </div>
+            </form>
+        </dialog>
         <div class="book-container">
 
         </div>

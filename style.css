@@ -26,7 +26,7 @@ html,body{
 }
 .book-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: roW;
     gap: 1rem;
 }
 .book-card{
