@@ -30,8 +30,21 @@ html,body{
     gap: 1rem;
 }
 .book-card{
-    width: min(250px);
     padding: 1rem;
+    width: min(250px);
     border: 2px solid black;
     border-radius: 10px;
+}
+.book-card h4{
+    grid-area: title;
+    margin: 0;
+    padding: 0;
+} 
+.book-card p{
+    margin: 0;
+    grid-area: info;
+}
+.book-card button{
+    grid-area: statusbtn;
+    background-color: blue;
 }

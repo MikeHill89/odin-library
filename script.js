@@ -1,12 +1,13 @@
 const addBookButton = document.querySelector(".addbook");
 const bookDialog = document.getElementById("bookDialog");
+const bookForm = document.getElementById("bookForm");
 const bookContainer = document.querySelector(".book-container");
 const selectEl = document.querySelector("select");
 const confirmBookBtn = document.querySelector("#confirmBookBtn");
 const myLibrary = [];
 
 //constructor of book objects, creates instances of Book
-function Book(title,author,pages,status){
+/*function Book(title,author,pages,status){
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -20,6 +21,23 @@ Book.prototype.toggleReadStatus = function () {
     // Toggle the read status between "Read" and "Not Read"
     this.status = this.status === "Read" ? "Not Read" : "Read";
 };
+*/
+class Book {
+    constructor(title,author,pages,status){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
+
+    returnBookInfo() {
+        return `Title: ${this.title}, written by ${this.author}, Pages: ${this.pages}, Read: ${this.status}.`;
+    }
+
+    toggleReadStatus() {
+        this.status = this.status === "Read" ? "Not Read" : "Read";
+    }
+}
 
 function displayBooks(){
     while (bookContainer.firstChild) {
@@ -88,6 +106,7 @@ function displayBooks(){
 }
 
 addBookButton.addEventListener("click", () => {
+    bookForm.reset();
     bookDialog.showModal();
 });
 
